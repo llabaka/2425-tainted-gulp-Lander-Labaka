@@ -62,6 +62,10 @@ function drinkPotion(player, potion) {
             player.stamina += effectValue;
             break;
 
+        case potion.name.includes("Failed"):
+            console.log("Failed Potion, no effect!");
+            break;
+
         default:
             // Otras pociones
             player.health += isPoison ? -1 : 1;
