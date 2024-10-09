@@ -35,6 +35,8 @@ export function drinkEmAll(player, potions) {
 
     //Otras pociones
     otherPotions(player, potions);
+
+    potionOfSanity(player, potions);
 }
 
 //Funcion de beber pocion de vida
@@ -100,6 +102,21 @@ function otherPotions(player, potions){
             player.health   += 1;
             player.magick   += 1;
             player.stamina  += 1;
+        }
+    }
+}
+
+//Funcion de beber veneno
+function potionOfSanity(player, potions){
+    
+    for (let i = 0; i < potions.length; i++) {
+        const potion = potions[i];
+
+        if (potion.name.includes("Sanity")){
+            
+            player.health   += potion.value;
+            player.magick   += potion.value;
+            player.stamina  += potion.value;
         }
     }
 }
