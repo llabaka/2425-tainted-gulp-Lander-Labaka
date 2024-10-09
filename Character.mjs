@@ -24,8 +24,13 @@ export function drinkEmAll(player, potions) {
     for (let i = 0; i < potions.length; i++) {
         const potion = potions[i];
 
+        // Si alguna condicion es verdad, se acabara el juego. Con cualquier pocion.
+        if (checkIfGameOver(player)){
+            return;
+        }
+
         //Beber la pocion
-        drinkPotion(player, potion)
+        drinkPotion(player, potion);
     }
 
 }
@@ -42,6 +47,8 @@ function drinkPotion(player, potion) {
 
         //Pocion Health
         case potion.name.includes("Health"):
+            console.log("Joseph health: " +player.health);
+            
             player.health += effectValue;
             break;
 
