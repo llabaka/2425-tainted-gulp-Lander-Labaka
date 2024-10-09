@@ -10,9 +10,6 @@ const execute = async () => {
         const data = await getData();
         const characterData = await getCharacterData();
 
-        //Bolsa roja
-        console.log(characterData.players[0].pouch_red);
-
         //Creamos los ingredientes
         const ingredients = Ingredients.load(data);
 
@@ -20,7 +17,14 @@ const execute = async () => {
 
         const cauldron = new Cauldron(ingredients);
 
-        const potionBag = PotionBag.create(ingredients, cauldron);
+        //Bolsas
+        const pouch_red = characterData.players[0].pouch_red
+        const pouch_green = characterData.players[0].pouch_red
+        const pouch_yellow = characterData.players[0].pouch_red
+        const pouch_aged = characterData.players[0].pouch_red
+
+        //Creacion de pociones segun la bolsa
+        const potionBag = PotionBag.create(pouch_red, cauldron);
         
         showPotions(potionBag.potions);
     }
