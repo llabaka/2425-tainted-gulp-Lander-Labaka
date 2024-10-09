@@ -10,6 +10,8 @@ const execute = async () => {
         const data = await getData();
         const characterData = await getCharacterData();
 
+        const josephData = characterData.players[0];
+
         //Creamos los ingredientes
         const ingredients = Ingredients.load(data);
 
@@ -18,20 +20,19 @@ const execute = async () => {
         const cauldron = new Cauldron(ingredients);
 
         //Bolsas
-        const pouch_red = characterData.players[0].pouch_red
-        const pouch_green = characterData.players[0].pouch_red
-        const pouch_yellow = characterData.players[0].pouch_red
-        const pouch_aged = characterData.players[0].pouch_red
+        const pouch_red = josephData.pouch_red
+        const pouch_green = josephData.pouch_red
+        const pouch_yellow = josephData.pouch_red
+        const pouch_aged = josephData.pouch_red
 
         //Creacion de pociones segun la bolsa
         const potionBag = PotionBag.create(pouch_red, cauldron);
         
         showPotions(potionBag.potions);
 
-        const character = Character.from(characterData.players[0],potionBag.potions);
+        const joseph = Character.from(josephData, potionBag.potions);
 
-        console.log(character);
-        
+        showCharacter(joseph)
     }
     catch (error)
     {
@@ -59,6 +60,25 @@ function showPotions(potions) {
     for (let i = 0; i < potions.length; i++) {
         const potion = potions[i];
         showPotion(potion);
+    }
+}
+
+function showCharacter(player) {
+    console.log(player.fullName);
+    console.log("---------------------");
+    console.log("Health:        " + player.health);
+    console.log("");
+    console.log("Magick:        " + player.magick);
+    console.log("");
+    console.log("Stamina:       " + player.stamina);
+    console.log("");
+    
+    for (let i = 0; i < player.potions.length; i++) {
+        const potion = player.potions[i];
+        
+        console.log("Potion " + (i + 1) + ": " + potion.name);
+        console.log("");
+        
     }
 }
 
