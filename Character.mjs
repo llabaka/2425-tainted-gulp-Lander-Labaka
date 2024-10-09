@@ -94,7 +94,7 @@ function drinkPotion(player, potion) {
             // Otras pociones
             console.log(`${player.fullName} drinks ${potion.name} and ${isPoison ? 'loses' : 'gains'} ${Math.abs(effectValue)} point of health, magick & stamina`);
             console.log("");
-            
+
             player.health += isPoison ? -1 : 1;
             player.magick += isPoison ? -1 : 1;
             player.stamina += isPoison ? -1 : 1;
@@ -117,7 +117,7 @@ function checkIfGameOver(player){
             return true;
 
         case player.magick <= 0:
-            console.log("A Joseph le han drenado toda su magia y el hechizo cas del Erudito X.G termina por rematarlo");
+            console.log("A Joseph le han drenado toda su magia y el hechizo caos del Erudito X.G termina por rematarlo");
             return true;
 
         case player.stamina <= 0:

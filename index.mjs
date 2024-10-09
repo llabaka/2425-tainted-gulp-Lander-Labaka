@@ -26,7 +26,7 @@ const execute = async () => {
         const pouch_aged = josephData.pouch_aged;
 
         //Creacion de pociones segun la bolsa
-        const potionBag = PotionBag.create(pouch_red, cauldron);
+        const potionBag = PotionBag.create(pouch_green, cauldron);
         
         showPotions(potionBag.potions);
 
@@ -83,6 +83,8 @@ function showCharacter(player) {
         console.log("");
         
     }
+    console.log("---------------------");
+    
 }
 
 execute();
