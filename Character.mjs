@@ -29,10 +29,13 @@ export function drinkEmAll(player, potions) {
 
     //Beber veneno
     poisonPotion(player, potions);
+
+    //Beber pocion resistencia
+    staminaPotion(player, potions);
 }
 
 
-//Funcion de beber veneno
+//Funcion de beber pocion de vida
 function healthPotion(player, potions){
     
     for (let i = 0; i < potions.length; i++) {
@@ -45,7 +48,7 @@ function healthPotion(player, potions){
     }
 }
 
-//Funcion de beber magicka
+//Funcion de beber pocion de magicka
 function magickPotion(player, potions){
     
     for (let i = 0; i < potions.length; i++) {
@@ -56,7 +59,19 @@ function magickPotion(player, potions){
             player.magick += potion.value;
         }
     }
+}
 
+//Funcion de beber pocion de resistencia
+function staminaPotion(player, potions){
+    
+    for (let i = 0; i < potions.length; i++) {
+        const potion = potions[i];
+
+        if (potion.name.includes("Stamina")){
+            
+            player.stamina += potion.value;
+        }
+    }
 }
 
 //Funcion de beber veneno
