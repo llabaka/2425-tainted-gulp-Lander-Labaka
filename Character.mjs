@@ -10,7 +10,7 @@ export default class Character {
     }
 
     static from(playerData, potions) {
-        const {name, characterClass, health, magick, stamina } = playerData;
+        const {name, class: characterClass, health, magick, stamina } = playerData;
 
         const fullName = `${name} the ${characterClass}`;
 
