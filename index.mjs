@@ -1,5 +1,6 @@
 import Cauldron from "./cauldron.mjs";
 import Ingredients from "./ingredients.mjs";
+import PotionBag from "./PotionBag.mjs";
 import { getData } from "./service.mjs";
 
 const execute = async () => {
@@ -13,6 +14,8 @@ const execute = async () => {
         showIngredients(ingredients);
 
         const cauldron = new Cauldron(ingredients);
+
+        const potionBag = new PotionBag();
 
         //Creamos pociones
         const potion1 = cauldron.createPotion("Bear Claws", "Bee");
