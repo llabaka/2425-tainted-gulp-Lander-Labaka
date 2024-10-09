@@ -23,6 +23,8 @@ export function drinkEmAll(player, potions) {
 
     for (let i = 0; i < potions.length; i++) {
         const potion = potions[i];
+
+        
         
         //Beber la pocion
         drinkPotion(player, potion)
@@ -62,6 +64,7 @@ function drinkPotion(player, potion) {
             player.stamina += effectValue;
             break;
 
+        //Pocion fallida
         case potion.name.includes("Failed"):
             console.log("Failed Potion, no effect!");
             break;
@@ -72,88 +75,6 @@ function drinkPotion(player, potion) {
             player.magick += isPoison ? -1 : 1;
             player.stamina += isPoison ? -1 : 1;
             break;
-
     }
 
-}
-//Funcion de beber pocion de vida
-function healthPotion(player, potions){
-    
-    for (let i = 0; i < potions.length; i++) {
-        const potion = potions[i];
-
-        if (potion.name.includes("Health")){
-            
-            player.health += potion.value;
-        }
-    }
-}
-
-//Funcion de beber pocion de magicka
-function magickPotion(player, potions){
-    
-    for (let i = 0; i < potions.length; i++) {
-        const potion = potions[i];
-
-        if (potion.name.includes("Magicka")){
-            
-            player.magick += potion.value;
-        }
-    }
-}
-
-//Funcion de beber pocion de resistencia
-function staminaPotion(player, potions){
-    
-    for (let i = 0; i < potions.length; i++) {
-        const potion = potions[i];
-
-        if (potion.name.includes("Stamina")){
-            
-            player.stamina += potion.value;
-        }
-    }
-}
-
-//Funcion de beber veneno
-function poisonPotion(player, potions){
-    
-    for (let i = 0; i < potions.length; i++) {
-        const potion = potions[i];
-
-        if (potion.name.includes("Poison")){
-            
-            player.health -= potion.value;
-        }
-    }
-}
-
-//Funcion de beber resto de pociones
-function otherPotions(player, potions){
-    
-    for (let i = 0; i < potions.length; i++) {
-        const potion = potions[i];
-
-        if (!potion.name.includes("Health") || !potion.name.includes("Magicka") || !potion.name.includes("Stamina")){
-            
-            player.health   += 1;
-            player.magick   += 1;
-            player.stamina  += 1;
-        }
-    }
-}
-
-//Funcion de beber veneno
-function potionOfSanity(player, potions){
-    
-    for (let i = 0; i < potions.length; i++) {
-        const potion = potions[i];
-
-        if (potion.name.includes("Sanity")){
-            
-            player.health   += potion.value;
-            player.magick   += potion.value;
-            player.stamina  += potion.value;
-        }
-    }
 }
