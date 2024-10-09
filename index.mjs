@@ -1,12 +1,17 @@
 import Cauldron from "./cauldron.mjs";
 import Ingredients from "./ingredients.mjs";
+import Potion from "./potion.mjs";
 import PotionBag from "./PotionBag.mjs";
-import { getData } from "./service.mjs";
+import { getAllData, getData } from "./service.mjs";
 
 const execute = async () => {
     try
     {
         const data = await getData();
+        const allData = await getAllData();
+
+        console.log(allData);
+        
 
         //Creamos los ingredientes
         const ingredients = Ingredients.load(data);
@@ -15,20 +20,9 @@ const execute = async () => {
 
         const cauldron = new Cauldron(ingredients);
 
-        const potionBag = new PotionBag();
-
-        //Creamos pociones
-        const potion1 = cauldron.createPotion("Bear Claws", "Bee");
-        showPotion(potion1);
-
-        const potion2 = cauldron.createPotion("Chicken's Egg", "Chaurus Eggs");
-        showPotion(potion2);
-
-        const potion3 = cauldron.createPotion("Chaurus Eggs", "Bleeding Crown");
-        showPotion(potion3);
-
-        const potion4 = cauldron.createPotion("Nightshade", "Ectoplasm");
-        showPotion(potion4);
+        const potionBag = PotionBag.create(ingredients, cauldron);
+        
+        showPotions(potionBag.potions);
     }
     catch (error)
     {
