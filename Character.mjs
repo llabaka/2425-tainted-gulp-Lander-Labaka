@@ -21,7 +21,7 @@ export default class Character {
 
 export function drinkEmAll(player, potions) {
 
-    for (let i = 0; i < potions.length + 1; i++) {
+    for (let i = 0; i < potions.length; i++) {
         const potion = potions[i];
 
         // Si alguna condicion es verdad, se acabara el juego. Con cualquier pocion.
@@ -31,6 +31,11 @@ export function drinkEmAll(player, potions) {
 
         //Beber la pocion
         drinkPotion(player, potion);
+    }
+
+    //Comprobar despues de beber todas las pociones
+    if(checkIfGameOver(player)){
+        return;
     }
 
 }
@@ -82,7 +87,15 @@ function drinkPotion(player, potion) {
             player.health   += effectValue;
             player.magick   += effectValue;
             player.stamina  += effectValue;
-            break;
+
+            // Mostrar los atributos después de beber la poción
+            console.log(`Health:  ${player.health}`);
+            console.log(`Magick:  ${player.magick}`);
+            console.log(`Stamina: ${player.stamina}`);
+            console.log("---------------------");
+
+            console.log("The main objective of the game has been achieved and there is no point in continuing");
+            return;
 
         //Pocion fallida
         case potion.name.includes("Failed"):
@@ -100,7 +113,6 @@ function drinkPotion(player, potion) {
             player.stamina += isPoison ? -1 : 1;
             break;
     }
-
         // Mostrar los atributos después de beber la poción
         console.log(`Health:  ${player.health}`);
         console.log(`Magick:  ${player.magick}`);
