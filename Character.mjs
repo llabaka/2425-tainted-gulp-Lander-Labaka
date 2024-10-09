@@ -21,7 +21,7 @@ export default class Character {
 
 export function drinkEmAll(player, potions) {
 
-    for (let i = 0; i < potions.length; i++) {
+    for (let i = 0; i < potions.length + 1; i++) {
         const potion = potions[i];
 
         // Si alguna condicion es verdad, se acabara el juego. Con cualquier pocion.
@@ -47,8 +47,10 @@ function drinkPotion(player, potion) {
 
         //Pocion Health
         case potion.name.includes("Health"):
-            console.log("Joseph health: " +player.health);
-            
+
+            console.log(player.fullName + " drinks " + potion.name + " and loses " + potion.value + " points of health");
+            console.log("");
+
             player.health += effectValue;
             break;
 
@@ -72,6 +74,7 @@ function drinkPotion(player, potion) {
         //Pocion fallida
         case potion.name.includes("Failed"):
             console.log("Failed Potion, no effect!");
+            console.log("");
             break;
 
         default:
@@ -81,6 +84,12 @@ function drinkPotion(player, potion) {
             player.stamina += isPoison ? -1 : 1;
             break;
     }
+
+        // Mostrar los atributos después de beber la poción
+        console.log(`Health:  ${player.health}`);
+        console.log(`Magick:  ${player.magick}`);
+        console.log(`Stamina: ${player.stamina}`);
+        console.log("---------------------");
 }
 
 function checkIfGameOver(player){
@@ -98,5 +107,8 @@ function checkIfGameOver(player){
         case player.stamina <= 0:
             console.log("Joseph está completamente agotado y no puede moverse más");
             return true;
+
+        default:
+            return false;
     }
 }
