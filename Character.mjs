@@ -24,8 +24,6 @@ export function drinkEmAll(player, potions) {
     for (let i = 0; i < potions.length; i++) {
         const potion = potions[i];
 
-        
-        
         //Beber la pocion
         drinkPotion(player, potion)
     }
@@ -76,5 +74,22 @@ function drinkPotion(player, potion) {
             player.stamina += isPoison ? -1 : 1;
             break;
     }
+}
 
+function checkIfGameOver(player){
+
+    switch(true){
+
+        case player.health <= 0:
+            console.log("Joseph ha fallecido");
+            return true;
+
+        case player.magick <= 0:
+            console.log("A Joseph le han drenado toda su magia y el hechizo cas del Erudito X.G termina por rematarlo");
+            return true;
+
+        case player.stamina <= 0:
+            console.log("Joseph está completamente agotado y no puede moverse más");
+            return true;
+    }
 }
