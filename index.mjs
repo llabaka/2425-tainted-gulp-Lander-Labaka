@@ -2,16 +2,16 @@ import Cauldron from "./cauldron.mjs";
 import Ingredients from "./ingredients.mjs";
 import Potion from "./potion.mjs";
 import PotionBag from "./PotionBag.mjs";
-import { getAllData, getData } from "./service.mjs";
+import { getCharacterData, getData } from "./service.mjs";
 
 const execute = async () => {
     try
     {
         const data = await getData();
-        const allData = await getAllData();
+        const characterData = await getCharacterData();
 
-        console.log(allData);
-        
+        //Bolsa roja
+        console.log(characterData.players[0].pouch_red);
 
         //Creamos los ingredientes
         const ingredients = Ingredients.load(data);
