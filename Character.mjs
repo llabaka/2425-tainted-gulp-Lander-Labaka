@@ -70,7 +70,7 @@ function drinkPotion(player, potion) {
             
             console.log("");
         
-            player.magick += effectValue;
+            player.stamina += effectValue;
             break;
 
         //Pocion Sanity
@@ -79,9 +79,9 @@ function drinkPotion(player, potion) {
             console.log(`${player.fullName} drinks ${potion.name} and ${isPoison ? 'loses' : 'gains'} ${Math.abs(effectValue)} points of health, magicka, and stamina.`);
             console.log("");
             
-            player.health += effectValue;
-            player.magick += effectValue;
-            player.stamina += effectValue;
+            player.health   += effectValue;
+            player.magick   += effectValue;
+            player.stamina  += effectValue;
             break;
 
         //Pocion fallida
@@ -92,7 +92,7 @@ function drinkPotion(player, potion) {
 
         default:
             // Otras pociones
-            console.log(`${player.fullName} drinks ${potion.name} and ${isPoison ? 'loses' : 'gains'} ${Math.abs(effectValue)} point of health, magick & stamina`);
+            console.log(`${player.fullName} drinks ${potion.name} and ${isPoison ? 'loses' : 'gains'} 1 point of health, magick & stamina`);
             console.log("");
 
             player.health += isPoison ? -1 : 1;
