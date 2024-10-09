@@ -48,7 +48,7 @@ function drinkPotion(player, potion) {
         //Pocion Health
         case potion.name.includes("Health"):
 
-            console.log(player.fullName + " drinks " + potion.name + " and loses " + potion.value + " points of health");
+            console.log(`${player.fullName} drinks ${potion.name} and ${isPoison ? 'loses' : 'gains'} ${Math.abs(effectValue)} points of health.`);
             console.log("");
 
             player.health += effectValue;
@@ -56,16 +56,29 @@ function drinkPotion(player, potion) {
 
         //Pocion Magicka
         case potion.name.includes("Magicka"):
+
+            console.log(`${player.fullName} drinks ${potion.name} and ${isPoison ? 'loses' : 'gains'} ${Math.abs(effectValue)} points of magicka.`);
+            console.log("");
+
             player.magick += effectValue;
             break;
 
         //Pocion Stamina
         case potion.name.includes("Stamina"):
+
+            console.log(`${player.fullName} drinks ${potion.name} and ${isPoison ? 'loses' : 'gains'} ${Math.abs(effectValue)} points of stamina.`);
+            
+            console.log("");
+        
             player.magick += effectValue;
             break;
 
         //Pocion Sanity
         case potion.name.includes("Sanity"):
+
+            console.log(`${player.fullName} drinks ${potion.name} and ${isPoison ? 'loses' : 'gains'} ${Math.abs(effectValue)} points of health, magicka, and stamina.`);
+            console.log("");
+            
             player.health += effectValue;
             player.magick += effectValue;
             player.stamina += effectValue;
@@ -73,12 +86,15 @@ function drinkPotion(player, potion) {
 
         //Pocion fallida
         case potion.name.includes("Failed"):
-            console.log("Failed Potion, no effect!");
+            console.log("Failed Potion! It has no effect!");
             console.log("");
             break;
 
         default:
             // Otras pociones
+            console.log(`${player.fullName} drinks ${potion.name} and ${isPoison ? 'loses' : 'gains'} ${Math.abs(effectValue)} point of health, magick & stamina`);
+            console.log("");
+            
             player.health += isPoison ? -1 : 1;
             player.magick += isPoison ? -1 : 1;
             player.stamina += isPoison ? -1 : 1;
