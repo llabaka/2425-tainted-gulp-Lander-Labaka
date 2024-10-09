@@ -21,24 +21,54 @@ export default class Character {
 
 export function drinkEmAll(player, potions) {
 
-    //Health potion
-    healthPotion(player, potions);
+    for (let i = 0; i < potions.length; i++) {
+        const potion = potions[i];
+        
+        //Beber la pocion
+        drinkPotion(player, potion)
+    }
 
-    //Beber magick
-    magickPotion(player, potions);
-
-    //Beber veneno
-    poisonPotion(player, potions);
-
-    //Beber pocion resistencia
-    staminaPotion(player, potions);
-
-    //Otras pociones
-    otherPotions(player, potions);
-
-    potionOfSanity(player, potions);
 }
 
+
+// Funcion refactorizada
+function drinkPotion(player, potion) {
+
+    const isPoison = potion.name.includes("Poison");
+    const effectValue = isPoison ? -potion.value : potion.value;
+
+    //Pocion Health
+    if (potion.name.includes("Health")) {
+
+        player.health += effectValue;
+    }
+
+    //Pocion Magicka
+    else if (potion.name.includes("Magicka"))
+    {
+        player.magick += effectValue;
+    }
+
+    //Pocion Stamina
+    else if (potion.name.includes("Stamina"))
+    {
+        player.stamina += effectValue;
+    } 
+    else
+    {
+        // Otras pociones
+        player.health += isPoison ? -1 : 1;
+        player.magick += isPoison ? -1 : 1;
+        player.stamina += isPoison ? -1 : 1;
+    }
+
+    // Pocion Sanity
+    if (potion.name.includes("Sanity")) {
+        player.health += effectValue;
+        player.magick += effectValue;
+        player.stamina += effectValue;
+    }
+}
 //Funcion de beber pocion de vida
 function healthPotion(player, potions){
     
