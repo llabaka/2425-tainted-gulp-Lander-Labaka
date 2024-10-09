@@ -52,4 +52,11 @@ function showPotion(potion){
     console.log("---------------------------------");
 }
 
+function showPotions(potions) {
+    for (let i = 0; i < potions.length; i++) {
+        const potion = potions[i];
+        showPotion(potion);
+    }
+}
+
 execute();
