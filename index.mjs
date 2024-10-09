@@ -1,6 +1,6 @@
 import Cauldron from "./cauldron.mjs";
+import Character from "./Character.mjs";
 import Ingredients from "./ingredients.mjs";
-import Potion from "./potion.mjs";
 import PotionBag from "./PotionBag.mjs";
 import { getCharacterData, getData } from "./service.mjs";
 
@@ -27,6 +27,11 @@ const execute = async () => {
         const potionBag = PotionBag.create(pouch_red, cauldron);
         
         showPotions(potionBag.potions);
+
+        const character = Character.from(characterData.players[0],potionBag.potions);
+
+        console.log(character);
+        
     }
     catch (error)
     {
