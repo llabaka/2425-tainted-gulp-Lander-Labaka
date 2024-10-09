@@ -20,13 +20,13 @@ const execute = async () => {
         const cauldron = new Cauldron(ingredients);
 
         //Bolsas
-        const pouch_red = josephData.pouch_red
-        const pouch_green = josephData.pouch_red
-        const pouch_yellow = josephData.pouch_red
-        const pouch_aged = josephData.pouch_red
+        const pouch_red = josephData.pouch_red;
+        const pouch_green = josephData.pouch_green;
+        const pouch_yellow = josephData.pouch_yellow;
+        const pouch_aged = josephData.pouch_aged;
 
         //Creacion de pociones segun la bolsa
-        const potionBag = PotionBag.create(pouch_green, cauldron);
+        const potionBag = PotionBag.create(pouch_red, cauldron);
         
         showPotions(potionBag.potions);
 
