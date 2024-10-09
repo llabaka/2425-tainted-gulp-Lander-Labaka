@@ -16,4 +16,29 @@ export default class Character {
 
         return new Character(fullName, health, magick, stamina, potions);
     }
+    
+}
+
+export function drinkEmAll(player, potions) {
+
+    //Beber veneno
+    drinkPoison(player, potions);
+}
+
+//Funcion de beber veneno
+function drinkPoison(player, potions){
+
+    console.log("JOSEPH BEFORE DRINKING: " + player.health);
+    
+    for (let i = 0; i < potions.length; i++) {
+        const potion = potions[i];
+
+        if (potion.name.includes("Poison")){
+            
+            player.health -= potion.value;
+        }
+    }
+
+    console.log("JOSEPH AFTER DRINKING: " + player.health);
+
 }

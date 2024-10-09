@@ -1,5 +1,5 @@
 import Cauldron from "./cauldron.mjs";
-import Character from "./Character.mjs";
+import Character, { drinkEmAll } from "./Character.mjs";
 import Ingredients from "./ingredients.mjs";
 import PotionBag from "./PotionBag.mjs";
 import { getCharacterData, getData } from "./service.mjs";
@@ -26,13 +26,16 @@ const execute = async () => {
         const pouch_aged = josephData.pouch_red
 
         //Creacion de pociones segun la bolsa
-        const potionBag = PotionBag.create(pouch_red, cauldron);
+        const potionBag = PotionBag.create(pouch_green, cauldron);
         
         showPotions(potionBag.potions);
 
         const joseph = Character.from(josephData, potionBag.potions);
 
         showCharacter(joseph)
+
+        //Joseph se bebera las pociones
+        drinkEmAll(joseph, potionBag.potions);
     }
     catch (error)
     {
