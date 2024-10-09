@@ -21,15 +21,32 @@ export default class Character {
 
 export function drinkEmAll(player, potions) {
 
+    //Health potion
+    healthPotion(player, potions);
+
     //Beber magick
-    drinkMagicka(player, potions);
+    magickPotion(player, potions);
 
     //Beber veneno
-    drinkPoison(player, potions);
+    poisonPotion(player, potions);
+}
+
+
+//Funcion de beber veneno
+function healthPotion(player, potions){
+    
+    for (let i = 0; i < potions.length; i++) {
+        const potion = potions[i];
+
+        if (potion.name.includes("Health")){
+            
+            player.health += potion.value;
+        }
+    }
 }
 
 //Funcion de beber magicka
-function drinkMagicka(player, potions){
+function magickPotion(player, potions){
     
     for (let i = 0; i < potions.length; i++) {
         const potion = potions[i];
@@ -43,7 +60,7 @@ function drinkMagicka(player, potions){
 }
 
 //Funcion de beber veneno
-function drinkPoison(player, potions){
+function poisonPotion(player, potions){
     
     for (let i = 0; i < potions.length; i++) {
         const potion = potions[i];
