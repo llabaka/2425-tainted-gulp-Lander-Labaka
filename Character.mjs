@@ -36,38 +36,41 @@ function drinkPotion(player, potion) {
 
     const isPoison = potion.name.includes("Poison");
     const effectValue = isPoison ? -potion.value : potion.value;
+    
 
-    //Pocion Health
-    if (potion.name.includes("Health")) {
+    switch (true) {
 
-        player.health += effectValue;
+        //Pocion Health
+        case potion.name.includes("Health"):
+            player.health += effectValue;
+            break;
+
+        //Pocion Magicka
+        case potion.name.includes("Magicka"):
+            player.magick += effectValue;
+            break;
+
+        //Pocion Stamina
+        case potion.name.includes("Stamina"):
+            player.magick += effectValue;
+            break;
+
+        //Pocion Sanity
+        case potion.name.includes("Sanity"):
+            player.health += effectValue;
+            player.magick += effectValue;
+            player.stamina += effectValue;
+            break;
+
+        default:
+            // Otras pociones
+            player.health += isPoison ? -1 : 1;
+            player.magick += isPoison ? -1 : 1;
+            player.stamina += isPoison ? -1 : 1;
+            break;
+
     }
 
-    //Pocion Magicka
-    else if (potion.name.includes("Magicka"))
-    {
-        player.magick += effectValue;
-    }
-
-    //Pocion Stamina
-    else if (potion.name.includes("Stamina"))
-    {
-        player.stamina += effectValue;
-    } 
-    else
-    {
-        // Otras pociones
-        player.health += isPoison ? -1 : 1;
-        player.magick += isPoison ? -1 : 1;
-        player.stamina += isPoison ? -1 : 1;
-    }
-
-    // Pocion Sanity
-    if (potion.name.includes("Sanity")) {
-        player.health += effectValue;
-        player.magick += effectValue;
-        player.stamina += effectValue;
-    }
 }
 //Funcion de beber pocion de vida
 function healthPotion(player, potions){
